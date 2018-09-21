@@ -3,14 +3,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MatButtonModule, MatCardModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatToolbarModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { BillingsProcessService } from './service/billings-process.service';
 import { MainBillingProcessorComponent } from './main-billing-processor/main-billing-processor.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, MainBillingProcessorComponent],
+  declarations: [AppComponent, MainBillingProcessorComponent, HeaderComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -18,6 +19,7 @@ import { MainBillingProcessorComponent } from './main-billing-processor/main-bil
     HttpClientModule,
     MatButtonModule,
     MatCardModule,
+    MatToolbarModule
   ],
   providers: [BillingsProcessService],
   bootstrap: [AppComponent],
