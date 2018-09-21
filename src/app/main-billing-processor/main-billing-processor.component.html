@@ -4,7 +4,7 @@
           <mat-card-title class="text-center"><h1>Process E-Billings</h1></mat-card-title>
           <mat-card-subtitle>Number of E-Billings to process: {{numberOfBillings?.Count}}</mat-card-subtitle>
           <p style="color: red" *ngIf="countErrorMessage">{{countErrorMessage}}</p>
-          <button mat-raised-button color="primary">Process</button>
+          <button mat-raised-button color="primary" (click)="onProcessBillings()">Process</button>
         </mat-card>
   </section>
 </div>
