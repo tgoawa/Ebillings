@@ -9,9 +9,10 @@ import { AppComponent } from './app.component';
 import { BillingsProcessService } from './service/billings-process.service';
 import { MainBillingProcessorComponent } from './main-billing-processor/main-billing-processor.component';
 import { HeaderComponent } from './header/header.component';
+import { BillingsCountComponent } from './main-billing-processor/billings-count/billings-count.component';
 
 @NgModule({
-  declarations: [AppComponent, MainBillingProcessorComponent, HeaderComponent],
+  declarations: [AppComponent, MainBillingProcessorComponent, HeaderComponent, BillingsCountComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

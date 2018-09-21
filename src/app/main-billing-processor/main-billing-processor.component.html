@@ -1,10 +1,6 @@
 <div fxLayout="column">
   <section fxLayout="row" fxLayoutAlign="center center">
-      <mat-card fxFlex="30">
-          <mat-card-title class="text-center"><h1>Process E-Billings</h1></mat-card-title>
-          <mat-card-subtitle>Number of E-Billings to process: {{numberOfBillings?.Count}}</mat-card-subtitle>
-          <p style="color: red" *ngIf="countErrorMessage">{{countErrorMessage}}</p>
-          <button mat-raised-button color="primary" (click)="onProcessBillings()">Process</button>
-        </mat-card>
+      <app-billings-count [billingsCount]="numberOfBillings" *ngIf="numberOfBillings" fxFlex="30"></app-billings-count>
+      <p style="color:red" *ngIf="countErrorMessage">{{countErrorMessage}}</p>
   </section>
 </div>
