@@ -4,6 +4,7 @@ import { throwError } from 'rxjs/internal/observable/throwError';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ICount } from 'src/app/model/count';
+import { IBillingAccount } from '../model/billingAccount';
 
 const api = environment.envApi;
 @Injectable()
@@ -19,7 +20,13 @@ export class BillingsProcessService {
     );
   }
 
-  processBillings() { }
+  processBillings() {
+    return this.http.get<IBillingAccount[]>(api + 'ProcessBillings')
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
 
   updateEmail() { }
 
