@@ -31,7 +31,7 @@ export class MainBillingProcessorComponent implements OnInit {
     });
   }
 
-  onProcessBillings() {
+  processBillings() {
     this.billingService.processBillings();
   }
 
