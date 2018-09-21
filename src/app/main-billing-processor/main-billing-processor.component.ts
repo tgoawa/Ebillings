@@ -9,24 +9,25 @@ import { BillingsProcessService } from '../service/billings-process.service';
 })
 export class MainBillingProcessorComponent implements OnInit {
   numberOfBillings: ICount;
-
+  countErrorMessage: string;
   constructor(private billingService: BillingsProcessService) { }
 
   ngOnInit() {
+    this.getNumberOfBillings();
   }
 
   getNumberOfBillings() {
     this.billingService.getBillingsCount()
     .subscribe((data: ICount) => {
       if (data) {
-        // this.isValidNumberOfBillings(data);
+        this.numberOfBillings = data;
       } else {
-        console.error('No return value from getBillingsCount');
-        // display error to view
+        console.error('No Billings Count object returned from service');
+        this.countErrorMessage = 'There was a problem retrieving the number of billings needed to process';
       }
     }, error => {
       console.error(error);
-      // display there was a system error
+      this.countErrorMessage = 'There was an error making the http request for count data';
     });
   }
 
