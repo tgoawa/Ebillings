@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { ICount } from 'src/app/model/count';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-billings-count',
@@ -8,9 +9,13 @@ import { ICount } from 'src/app/model/count';
 })
 export class BillingsCountComponent implements OnInit {
   @Input() billingsCount: ICount;
+  @Output() processBillings = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
 
+  onProcessBillings(button) {
+    this.processBillings.emit(button);
+  }
 }

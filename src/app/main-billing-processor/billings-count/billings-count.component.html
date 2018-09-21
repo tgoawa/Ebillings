@@ -3,5 +3,5 @@
     <h1>Process E-Billings</h1>
   </mat-card-title>
   <mat-card-content>Number of E-Billings to process: {{billingsCount?.Count}}</mat-card-content>
-  <button mat-raised-button color="primary">Process</button>
+  <button mat-raised-button color="primary" (click)="onProcessBillings($event)">Process</button>
 </mat-card>
