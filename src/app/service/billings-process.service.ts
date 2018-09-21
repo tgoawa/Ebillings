@@ -1,17 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs/internal/observable/throwError';
+import { catchError, retry } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { ICount } from 'src/app/model/count';
 
-@Injectable({
-  providedIn: 'root'
-})
+const api = environment.envApi;
+@Injectable()
 export class BillingsProcessService {
 
   constructor(private http: HttpClient) { }
 
+  getBillingsCount() {
+    return this.http.get<ICount>(api + 'GetBillingsCount')
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
   processBillings() { }
 
-  UpdateEmail() { }
+  updateEmail() { }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
