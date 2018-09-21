@@ -7,9 +7,10 @@ import { MatButtonModule, MatCardModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { BillingsProcessService } from './service/billings-process.service';
+import { MainBillingProcessorComponent } from './main-billing-processor/main-billing-processor.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MainBillingProcessorComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
