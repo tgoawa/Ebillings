@@ -1,6 +1,6 @@
 <div fxLayout="column">
   <section fxLayout="row" fxLayoutAlign="center center">
-      <app-billings-count [billingsCount]="numberOfBillings" *ngIf="numberOfBillings" fxFlex="30" (processBillings)="processBillings()"></app-billings-count>
-      <p style="color:red" *ngIf="countErrorMessage">{{countErrorMessage}}</p>
+      <app-billings-count [billingsCount]="displayCount" *ngIf="displayCount" fxFlex="30"></app-billings-count>
+      <!-- <p style="color:red" *ngIf="displayCount.MessageType > 0">{{countErrorMessage}}</p> -->
   </section>
 </div>
