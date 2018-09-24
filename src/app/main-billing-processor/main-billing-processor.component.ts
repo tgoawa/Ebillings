@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DisplayCount, ICount } from 'src/app/model/count';
+import { ICount } from 'src/app/model/count';
 import { BillingsProcessService } from '../service/billings-process.service';
 import { IBillingAccount } from '../model/billingAccount';
 
@@ -9,7 +9,7 @@ import { IBillingAccount } from '../model/billingAccount';
   styleUrls: ['./main-billing-processor.component.css']
 })
 export class MainBillingProcessorComponent implements OnInit {
-  displayCount: DisplayCount;
+  displayCount: ICount;
 
   constructor(private billingsService: BillingsProcessService) { }
 
@@ -18,18 +18,10 @@ export class MainBillingProcessorComponent implements OnInit {
   }
 
   getNumberOfBillings() {
-    this.billingsService.getBillingsCount()
-    .subscribe((data: ICount) => {
-      if (data) {
-        this.displayCount = new DisplayCount(data.Count, 1);
-      } else {
-        console.error('No Billings Count object returned from service');
-        this.displayCount = new DisplayCount(data.Count, 2);
-      }
-    }, error => {
-      console.error(error);
-      this.displayCount = new DisplayCount(0, 3);
-    });
+    // const processCode = this.getBillingCount();
+    // if (processCode === 1) {
+
+    // }
   }
 
   processBillings() {
@@ -44,4 +36,19 @@ export class MainBillingProcessorComponent implements OnInit {
     });
   }
 
+  getBillingCount(): number {
+    this.billingsService.getBillingsCount()
+    .subscribe((data: ICount) => {
+      if (data) {
+        this.displayCount = data;
+        return 1;
+      } else {
+        console.error('No Billings Count object returned from service');
+        return 2;
+      }
+    }, error => {
+      console.error(error);
+    });
+    return 3;
+  }
 }
