@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ICount } from 'src/app/model/count';
-import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-billings-count',
