@@ -10,7 +10,9 @@ import { IBillingAccount } from '../model/billingAccount';
 })
 export class MainBillingProcessorComponent implements OnInit {
   displayCount: ICount;
+  listOfBillings: IBillingAccount[];
   countProcessStatus: number;
+  billingsProcessStatus: number;
   constructor(private billingsService: BillingsProcessService) { }
 
   ngOnInit() {
@@ -20,12 +22,23 @@ export class MainBillingProcessorComponent implements OnInit {
   processBillings() {
     this.billingsService.processBillings()
     .subscribe((data: IBillingAccount[]) => {
-      if (data.length === 0) {
-        console.log('All billings processed with no issues.');
-        // display message to view
+      if (data) {
+        if (data.length > 0) {
+          this.listOfBillings = data;
+          this.billingsProcessStatus = 2;
+        } else {
+          this.listOfBillings = data;
+          this.billingsProcessStatus = 1;
+        }
       } else {
-        // create list of billings with error for view.
+        console.error('No List of accounts returned from service');
+        this.listOfBillings = null;
+        this.billingsProcessStatus = 3;
       }
+    }, error => {
+      console.error(error);
+      this.listOfBillings = null;
+      this.billingsProcessStatus = 4;
     });
   }
 
