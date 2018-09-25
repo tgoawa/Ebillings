@@ -10,6 +10,7 @@ import { IBillingAccount } from '../model/billingAccount';
 })
 export class MainBillingProcessorComponent implements OnInit {
   displayCount: ICount;
+  isProcessing = false;
   listOfBillings: IBillingAccount[];
   countProcessStatus: number;
   billingsProcessStatus: number;
@@ -20,9 +21,11 @@ export class MainBillingProcessorComponent implements OnInit {
   }
 
   processBillings() {
+    this.isProcessing = true;
     this.billingsService.processBillings()
     .subscribe((data: IBillingAccount[]) => {
       if (data) {
+        this.isProcessing = false;
         if (data.length > 0) {
           this.listOfBillings = data;
           this.billingsProcessStatus = 2;
@@ -34,11 +37,13 @@ export class MainBillingProcessorComponent implements OnInit {
         console.error('No List of accounts returned from service');
         this.listOfBillings = null;
         this.billingsProcessStatus = 3;
+        this.isProcessing = false;
       }
     }, error => {
       console.error(error);
       this.listOfBillings = null;
       this.billingsProcessStatus = 4;
+      this.isProcessing = false;
     });
   }
 

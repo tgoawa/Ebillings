@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MatButtonModule, MatCardModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatProgressSpinnerModule, MatToolbarModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { BillingsProcessService } from './service/billings-process.service';
@@ -21,6 +21,7 @@ import { BillingAccountComponent } from './main-billing-processor/billing-accoun
     HttpClientModule,
     MatButtonModule,
     MatCardModule,
+    MatProgressSpinnerModule,
     MatToolbarModule
   ],
   providers: [BillingsProcessService],

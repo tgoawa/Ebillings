@@ -1,12 +1,25 @@
-<div fxLayout="column">
-  <section fxLayout="row" fxLayoutAlign="center center" *ngIf="displayCount">
-      <app-billings-count [billingsCount]="displayCount" *ngIf="countProcessStatus == 1" fxFlex="30" (processBillings)="processBillings()"></app-billings-count>
-      <p style="color:red" *ngIf="countProcessStatus == 2">There was an issue displaying the amount of billings needed to process. Please reload the application. If problem persists please contact the help desk.</p>
-      <p style="color:red" *ngIf="countProcessStatus == 3">There was a system error. Please reload the application. If problem persists please contact the help desk.</p>
+<div fxLayout="column" fxFlex="100">
+  <section fxLayout="row" fxLayoutAlign="center center" *ngIf="displayCount; else loading;">
+    <app-billings-count [billingsCount]="displayCount" *ngIf="countProcessStatus == 1" fxFlex="30" (processBillings)="processBillings()"></app-billings-count>
+    <p style="color:red" *ngIf="countProcessStatus == 2">There was an issue displaying the amount of billings needed to
+      process. Please reload the application. If problem persists please contact the help desk.</p>
+    <p style="color:red" *ngIf="countProcessStatus == 3">There was a system error. Please reload the application. If
+      problem persists please contact the help desk.</p>
   </section>
   <section fxLayout="row" fxLayoutAlign="center center" *ngIf="listOfBillings">
-    <app-billing-account [listOfBillings]="listOfBillings" *ngIf="billingsProcessStatus == 1 || billingsProcessStatus == 2" fxFlex="30"></app-billing-account>
-    <p style="color:red" *ngIf="billingsProcessStatus == 3">There was an issue displaying the list of accounts that had issues processing. Please reload the application. If problem persists please contact the help desk.</p>
-    <p style="color:red" *ngIf="billingsProcessStatus == 4">There was a system error. Please reload the application. If problem persists please contact the help desk.</p>
-</section>
+    <app-billing-account [listOfBillings]="listOfBillings" *ngIf="billingsProcessStatus == 1 || billingsProcessStatus == 2"
+      fxFlex="30"></app-billing-account>
+    <p style="color:red" *ngIf="billingsProcessStatus == 3">There was an issue displaying the list of accounts that had
+      issues processing. Please reload the application. If problem persists please contact the help desk.</p>
+    <p style="color:red" *ngIf="billingsProcessStatus == 4">There was a system error. Please reload the application. If
+      problem persists please contact the help desk.</p>
+  </section>
+  <div fxLayout="column" fxLayoutAlign="center center" *ngIf="isProcessing">
+    <mat-spinner></mat-spinner>
+  </div>
+  <ng-template #loading>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
 </div>
