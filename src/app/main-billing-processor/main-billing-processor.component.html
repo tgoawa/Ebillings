@@ -1,6 +1,7 @@
 <div fxLayout="column">
   <section fxLayout="row" fxLayoutAlign="center center">
-      <app-billings-count [billingsCount]="displayCount" *ngIf="displayCount" fxFlex="30"></app-billings-count>
-      <!-- <p style="color:red" *ngIf="displayCount.MessageType > 0">{{countErrorMessage}}</p> -->
+      <app-billings-count [billingsCount]="displayCount" *ngIf="displayCount && countProcessStatus == 1" fxFlex="30"></app-billings-count>
+      <p style="color:red" *ngIf="displayCount && countProcessStatus == 2">There was an issue displaying the amount of billings needed to process. Please reload the application. If problem persists please contact the help desk.</p>
+      <p style="color:red" *ngIf="displayCount && countProcessStatus == 3">There was a system error. Please reload the application. If problem persists please contact the help desk.</p>
   </section>
 </div>

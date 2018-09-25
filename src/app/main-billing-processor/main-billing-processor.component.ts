@@ -10,18 +10,11 @@ import { IBillingAccount } from '../model/billingAccount';
 })
 export class MainBillingProcessorComponent implements OnInit {
   displayCount: ICount;
-
+  countProcessStatus: number;
   constructor(private billingsService: BillingsProcessService) { }
 
   ngOnInit() {
-    this.getNumberOfBillings();
-  }
-
-  getNumberOfBillings() {
-    // const processCode = this.getBillingCount();
-    // if (processCode === 1) {
-
-    // }
+    this.getBillingCount();
   }
 
   processBillings() {
@@ -36,19 +29,21 @@ export class MainBillingProcessorComponent implements OnInit {
     });
   }
 
-  getBillingCount(): number {
+  getBillingCount() {
     this.billingsService.getBillingsCount()
     .subscribe((data: ICount) => {
       if (data) {
         this.displayCount = data;
-        return 1;
+        this.countProcessStatus = 1;
       } else {
         console.error('No Billings Count object returned from service');
-        return 2;
+        this.displayCount = null;
+        this.countProcessStatus = 2;
       }
     }, error => {
       console.error(error);
+      this.countProcessStatus = 3;
+      this.displayCount = null;
     });
-    return 3;
   }
 }

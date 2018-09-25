@@ -6,7 +6,9 @@ import { BillingsProcessService } from '../service/billings-process.service';
 import { of } from 'rxjs/internal/observable/of';
 import { BillingsCountComponent } from './billings-count/billings-count.component';
 import { MatCardModule } from '@angular/material';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs/internal/observable/throwError';
+
 
 describe('MainBillingProcessorComponent', () => {
   let component: MainBillingProcessorComponent;
@@ -33,13 +35,41 @@ describe('MainBillingProcessorComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call getNumberOfBillings and return an object that contains the amount of billings waiting for process', async(() => {
+  it('should call getNumberOfBillings and process status should equal 1', async(() => {
     const response: ICount = {Count: '8'};
 
     spyOn(billingService, 'getBillingsCount').and.returnValue(of(response));
     component.getBillingCount();
     fixture.detectChanges();
 
-    expect(component.displayCount).toEqual(response);
+    expect(component.countProcessStatus).toEqual(1);
+  }));
+
+  it('should call getNumberOfBillings and process status should equal 2', async(() => {
+    const response = null;
+
+    spyOn(billingService, 'getBillingsCount').and.returnValue(of(response));
+    component.getBillingCount();
+    fixture.detectChanges();
+
+    expect(component.countProcessStatus).toEqual(2);
+  }));
+
+  it('should call getNumberOfBillings and process status should equal 3', async(() => {
+
+    spyOn(billingService, 'getBillingsCount').and.returnValue(
+      throwError(
+        new HttpErrorResponse({
+          error: {
+            message: 'Error processing request',
+          },
+          status: 500
+        })
+      )
+    );
+    component.getBillingCount();
+    fixture.detectChanges();
+
+    expect(component.countProcessStatus).toEqual(3);
   }));
 });
