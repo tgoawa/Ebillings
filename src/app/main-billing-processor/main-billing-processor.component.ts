@@ -14,6 +14,7 @@ export class MainBillingProcessorComponent implements OnInit {
   listOfBillings: IBillingAccount[];
   countProcessStatus: number;
   billingsProcessStatus: number;
+
   constructor(private billingsService: BillingsProcessService) { }
 
   ngOnInit() {

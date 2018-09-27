@@ -1,16 +1,28 @@
 <div fxLayout="row" fxLayoutAlign="space-between start">
-    <mat-card>
-      <mat-card-title>List of Accounts that had an issue processing</mat-card-title>
-      <mat-card-content>
-        <ul>
-          <li *ngFor="let account of listOfBillings" [ngStyle]="{'color':account.ErrorType == 1 ? 'yellow' : 'red'}">{{account.ClientId}}</li>
-        </ul>
-      </mat-card-content>
-    </mat-card>
-    <mat-card>
-      <mat-card-title>Account Details</mat-card-title>
-      <mat-card-content>
-
-      </mat-card-content>
-    </mat-card>
+  <mat-card>
+    <mat-card-title>List of Accounts that had an issue processing</mat-card-title>
+    <mat-card-content>
+      <ul>
+        <li *ngFor="let account of listOfBillings" [ngStyle]="{'color':account.ErrorType == 1 ? 'yellow' : 'red'}">{{account.ClientId}}</li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>Account Details</mat-card-title>
+    <mat-card-content>
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Company (disabled)" disabled value="Google">
+        </mat-form-field>
+        <p>
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Address">1600 Amphitheatre Pkwy</textarea>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Address 2"></textarea>
+          </mat-form-field>
+        </p>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>
