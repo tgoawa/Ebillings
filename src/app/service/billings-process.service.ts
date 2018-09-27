@@ -28,7 +28,13 @@ export class BillingsProcessService {
     );
   }
 
-  updateEmail() { }
+  updateBadEmail(account: IBillingAccount) {
+    return this.http.put<IBillingAccount>(api + 'UpdateBadEmail', account)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
