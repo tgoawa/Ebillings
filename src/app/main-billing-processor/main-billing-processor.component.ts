@@ -10,6 +10,8 @@ import { IBillingAccount } from '../model/billingAccount';
 })
 export class MainBillingProcessorComponent implements OnInit {
   displayCount: ICount;
+  displayBillingsCount: boolean;
+  displayBillingAccountProcessor: boolean;
   isProcessing = false;
   listOfBillings: IBillingAccount[];
   countProcessStatus: number;
@@ -23,6 +25,8 @@ export class MainBillingProcessorComponent implements OnInit {
 
   processBillings() {
     this.isProcessing = true;
+    this.displayBillingAccountProcessor = true;
+    this.displayBillingsCount = false;
     this.billingsService.processBillings()
     .subscribe((data: IBillingAccount[]) => {
       if (data) {
@@ -49,6 +53,8 @@ export class MainBillingProcessorComponent implements OnInit {
   }
 
   getBillingCount() {
+    this.displayBillingsCount = true;
+    this.displayBillingAccountProcessor = false;
     this.billingsService.getBillingsCount()
     .subscribe((data: ICount) => {
       if (data) {
