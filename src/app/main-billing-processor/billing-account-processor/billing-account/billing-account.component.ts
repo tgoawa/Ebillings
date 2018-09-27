@@ -1,4 +1,4 @@
-import { Component, OnChanges, Input } from '@angular/core';
+import { Component, OnChanges, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { IBillingAccount } from 'src/app/model/billingAccount';
@@ -6,7 +6,8 @@ import { IBillingAccount } from 'src/app/model/billingAccount';
 @Component({
   selector: 'app-billing-account',
   templateUrl: './billing-account.component.html',
-  styleUrls: ['./billing-account.component.css']
+  styleUrls: ['./billing-account.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BillingAccountComponent implements OnChanges {
   @Input() BillingAccount: IBillingAccount;

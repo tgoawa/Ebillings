@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IBillingAccount } from 'src/app/model/billingAccount';
 
 @Component({
@@ -8,9 +8,14 @@ import { IBillingAccount } from 'src/app/model/billingAccount';
 })
 export class BillingAccountListComponent implements OnInit {
   @Input() listOfBillings: IBillingAccount[];
+  @Output() selectedAccount = new EventEmitter<IBillingAccount>();
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSelect(account: IBillingAccount) {
+    this.selectedAccount.emit(account);
   }
 
 }

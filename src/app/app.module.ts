@@ -9,6 +9,7 @@ import {
   MatCardModule,
   MatInputModule,
   MatFormFieldModule,
+  MatListModule,
   MatProgressSpinnerModule,
   MatToolbarModule,
 } from '@angular/material';
@@ -43,6 +44,7 @@ import { BillingAccountProcessorComponent } from './main-billing-processor/billi
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
+    MatListModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
     ReactiveFormsModule,

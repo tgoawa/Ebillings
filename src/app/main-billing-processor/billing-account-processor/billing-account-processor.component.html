@@ -1,2 +1,4 @@
-<app-billing-account-list [listOfBillings]="billingList"></app-billing-account-list>
-<!-- <app-billing-account></app-billing-account> -->
+<div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="20px">
+  <app-billing-account-list [listOfBillings]="billingList" (selectedAccount)="onAccountSelected($event)" fxFlex="50"></app-billing-account-list>
+  <app-billing-account *ngIf="selectedAccount" [BillingAccount]="selectedAccount" fxFlex="50"></app-billing-account>
+</div>

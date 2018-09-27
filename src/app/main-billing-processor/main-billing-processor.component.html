@@ -17,7 +17,7 @@
   <div *ngIf="displayBillingAccountProcessor">
     <section fxLayout="row" fxLayoutAlign="center center" *ngIf="listOfBillings">
       <app-billing-account-processor [billingList]="listOfBillings" *ngIf="billingsProcessStatus == 1 || billingsProcessStatus == 2"
-        fxFlex="30"></app-billing-account-processor>
+        fxFlex="70"></app-billing-account-processor>
       <p style="color:red" *ngIf="billingsProcessStatus == 3">There was an issue displaying the list of accounts that
         had
         issues processing. Please reload the application. If problem persists please contact the help desk.</p>
