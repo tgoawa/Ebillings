@@ -1,6 +1,7 @@
 import { Component, OnChanges, Input } from '@angular/core';
-import { IBillingAccount } from '../../model/billingAccount';
+
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { IBillingAccount } from 'src/app/model/billingAccount';
 
 @Component({
   selector: 'app-billing-account',

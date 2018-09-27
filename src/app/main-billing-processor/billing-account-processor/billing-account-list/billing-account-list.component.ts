@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IBillingAccount } from '../../model/billingAccount';
+import { IBillingAccount } from 'src/app/model/billingAccount';
 
 @Component({
   selector: 'app-billing-account-list',
