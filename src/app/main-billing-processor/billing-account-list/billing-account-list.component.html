@@ -1,0 +1,8 @@
+<mat-card>
+    <mat-card-title>List of Accounts that had an issue processing</mat-card-title>
+    <mat-card-content>
+      <ul>
+        <li *ngFor="let account of listOfBillings" [ngStyle]="{'color':account.ErrorType == 1 ? 'yellow' : 'red'}">{{account.ClientId}}</li>
+      </ul>
+    </mat-card-content>
+  </mat-card>

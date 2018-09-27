@@ -18,9 +18,10 @@ import { MainBillingProcessorComponent } from './main-billing-processor/main-bil
 import { HeaderComponent } from './header/header.component';
 import { BillingsCountComponent } from './main-billing-processor/billings-count/billings-count.component';
 import { BillingAccountComponent } from './main-billing-processor/billing-account/billing-account.component';
+import { BillingAccountListComponent } from './main-billing-processor/billing-account-list/billing-account-list.component';
 
 @NgModule({
-  declarations: [AppComponent, MainBillingProcessorComponent, HeaderComponent, BillingsCountComponent, BillingAccountComponent],
+  declarations: [AppComponent, MainBillingProcessorComponent, HeaderComponent, BillingsCountComponent, BillingAccountComponent, BillingAccountListComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

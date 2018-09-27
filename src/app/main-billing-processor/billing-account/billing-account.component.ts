@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
 import { IBillingAccount } from '../../model/billingAccount';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
@@ -7,14 +7,14 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   templateUrl: './billing-account.component.html',
   styleUrls: ['./billing-account.component.css']
 })
-export class BillingAccountComponent implements OnInit {
-  @Input() listOfBillings: IBillingAccount[];
-  BillingAccount: IBillingAccount;
+export class BillingAccountComponent implements OnChanges {
+  @Input() BillingAccount: IBillingAccount;
   BillingAccountForm: FormGroup;
 
   constructor(private fb: FormBuilder) { }
 
-  ngOnInit() {
+  ngOnChanges() {
+    this.BillingAccountForm = this.toFormGroup(this.BillingAccount);
   }
 
   private toFormGroup(data: IBillingAccount): FormGroup {

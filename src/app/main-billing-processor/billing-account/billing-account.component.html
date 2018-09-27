@@ -10,7 +10,7 @@
   <mat-card>
     <mat-card-title>Account Details</mat-card-title>
     <mat-card-content>
-      <form class="example-form">
+      <form [formGroup]="BillingAccountForm">
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Company (disabled)" disabled value="Google">
         </mat-form-field>
