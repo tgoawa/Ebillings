@@ -26,7 +26,7 @@
           </mat-form-field>
           <span *ngIf="BillingAccountForm.get('EmailAddressTo').errors" style="color: red">Not a valid email address format</span>
         </p>
-        <p>
+        <p *ngIf="BillingAccount.ErrorType === 1">
           <button mat-flat-button color="primary" type="submit" [disabled]="!BillingAccountForm.valid">Process update</button>
         </p>
       </form>
