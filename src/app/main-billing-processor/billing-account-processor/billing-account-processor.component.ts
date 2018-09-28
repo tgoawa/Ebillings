@@ -41,24 +41,16 @@ export class BillingAccountProcessorComponent implements OnChanges {
 
   private processUpdateEmailResponse(originalAccount: IBillingAccount,  responseAccount: IBillingAccount) {
     const indexOfOriginalAccount = this.billingList.findIndex(account => account.tblDraftBillId === originalAccount.tblDraftBillId);
-    if (this.isEmpty(responseAccount)) {
+    if (responseAccount.ClientId === 0) {
       if (indexOfOriginalAccount > 0) {
         this.billingList.splice(indexOfOriginalAccount, 1);
         this.updateEmailProcessStatus = 1;
       }
     } else {
-      // response had an object. Account was not processed. Display message to user
+      // response object was the same as the one sent. Account was not processed. Display message to user
       this.billingList[indexOfOriginalAccount] = responseAccount;
       this.updateEmailProcessStatus = 2;
     }
   }
 
-  private isEmpty(obj) {
-    for (const key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        return false;
-      }
-    }
-    return true;
-  }
 }

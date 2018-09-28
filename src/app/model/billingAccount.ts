@@ -5,4 +5,5 @@ export interface IBillingAccount {
   InvoicePDFFile: string;
   EmailAddressTo: string;
   ErrorType: number;
+  BillNumber: string;
 }

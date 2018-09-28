@@ -29,9 +29,10 @@ export class BillingsProcessService {
   }
 
   updateBadEmail(account: IBillingAccount) {
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    return this.http.put(api + 'UpdateBadEmail', JSON.stringify(account), {headers: headers})
+    // const headers = new HttpHeaders();
+    // headers.append('Content-Type', 'application/json');
+    // return this.http.put(api + 'UpdateBadEmail', JSON.stringify(account), {headers: headers})
+    return this.http.put(api + 'UpdateBadEmail', account)
     .pipe(
       retry(3),
       catchError(this.handleError)

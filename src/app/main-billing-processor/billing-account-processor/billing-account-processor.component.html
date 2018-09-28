@@ -3,8 +3,8 @@
   <app-billing-account *ngIf="selectedAccount" [BillingAccount]="selectedAccount" (accountToUpdate)="updateBadEmail($event)"
     fxFlex="50"></app-billing-account>
 </div>
-<p *ngIf="updateEmailProcessStatus == 1" style="background-color: green">Email address on account was updated and successfully processed!</p>
-<p *ngIf="updateEmailProcessStatus == 2" style="background-color: yellow">Email address on account was updated, but account was still unable to process!</p>
-<p *ngIf="updateEmailProcessStatus == 3" style="background-color: red">There was an issue attempting to update the email on the account. Please try
+<p *ngIf="updateEmailProcessStatus == 1" style="background-color: green; color: white; padding: 10px">Email address on account was updated and successfully processed!</p>
+<p *ngIf="updateEmailProcessStatus == 2" style="background-color: yellow; padding: 10px">Email address on account was updated, but account was still unable to process!</p>
+<p *ngIf="updateEmailProcessStatus == 3" style="background-color: red; padding: 10px">There was an issue attempting to update the email on the account. Please try
   again. If problem persists contact the help desk!</p>
-<p *ngIf="updateEmailProcessStatus == 4" style="background-color: red">There was a system error, please contact the help desk!</p>
+<p *ngIf="updateEmailProcessStatus == 4" style="background-color: red; padding: 10px">There was a system error, please contact the help desk!</p>

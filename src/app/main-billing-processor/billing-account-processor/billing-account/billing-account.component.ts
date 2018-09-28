@@ -26,11 +26,13 @@ export class BillingAccountComponent implements OnChanges {
 
   private toFormGroup(data: IBillingAccount): FormGroup {
     const formGroup = this.fb.group({
-      tblDraftBillId: [{value: data.tblDraftBillId, disabled: true}],
+      tblDraftBillId: data.tblDraftBillId,
       ClientId: [{value: data.ClientId, disabled: true}],
       AccountDirector: [{value: data.AccountDirector, disabled: true}],
       InvoicePDFFile: [{value: data.InvoicePDFFile, disabled: true}],
-      EmailAddressTo: [data.EmailAddressTo, Validators.email]
+      EmailAddressTo: [data.EmailAddressTo, Validators.email],
+      BillNumber: [{value: data.BillNumber, disabled: true}],
+      ErrorType: data.ErrorType
     });
 
     return formGroup;
