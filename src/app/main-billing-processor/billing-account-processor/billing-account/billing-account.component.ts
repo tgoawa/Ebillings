@@ -1,6 +1,6 @@
-import { Component, OnChanges, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnChanges, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IBillingAccount } from 'src/app/model/billingAccount';
 
 @Component({
@@ -11,6 +11,7 @@ import { IBillingAccount } from 'src/app/model/billingAccount';
 })
 export class BillingAccountComponent implements OnChanges {
   @Input() BillingAccount: IBillingAccount;
+  @Output() accountToUpdate = new EventEmitter<IBillingAccount>();
   BillingAccountForm: FormGroup;
 
   constructor(private fb: FormBuilder) { }
@@ -19,13 +20,17 @@ export class BillingAccountComponent implements OnChanges {
     this.BillingAccountForm = this.toFormGroup(this.BillingAccount);
   }
 
+  onSubmit(formValue) {
+    this.accountToUpdate.emit(formValue);
+  }
+
   private toFormGroup(data: IBillingAccount): FormGroup {
     const formGroup = this.fb.group({
       tblDraftBillId: [{value: data.tblDraftBillId, disabled: true}],
       ClientId: [{value: data.ClientId, disabled: true}],
       AccountDirector: [{value: data.AccountDirector, disabled: true}],
       InvoicePDFFile: [{value: data.InvoicePDFFile, disabled: true}],
-      EmailAddressTo: data.EmailAddressTo
+      EmailAddressTo: [data.EmailAddressTo, Validators.email]
     });
 
     return formGroup;
