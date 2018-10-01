@@ -19,6 +19,7 @@ export class BillingAccountProcessorComponent implements OnChanges {
 
   onAccountSelected(account: IBillingAccount) {
     this.selectedAccount = account;
+    this.updateEmailProcessStatus = 0;
   }
 
   updateBadEmail(account: IBillingAccount) {
