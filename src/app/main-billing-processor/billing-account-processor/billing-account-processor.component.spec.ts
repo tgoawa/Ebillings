@@ -39,6 +39,35 @@ describe('BillingAccountProcessorComponent', () => {
     fixture = TestBed.createComponent(BillingAccountProcessorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    component.billingList = [
+      {
+        tblDraftBillId: 200,
+        AccountDirector: 'Bad PDF',
+        ClientId: 200,
+        InvoicePDFFile: 'Bad PDF',
+        EmailAddressTo: 'test@email.com',
+        ErrorType: 1,
+        BillNumber: 'test bill number'
+      },
+      {
+        tblDraftBillId: 200,
+        AccountDirector: 'Bad PDF',
+        ClientId: 300,
+        InvoicePDFFile: 'Bad PDF',
+        EmailAddressTo: 'test@email.com',
+        ErrorType: 1,
+        BillNumber: 'test bill number'
+      },
+      {
+        tblDraftBillId: 200,
+        AccountDirector: 'Bad PDF',
+        ClientId: 400,
+        InvoicePDFFile: 'Bad PDF',
+        EmailAddressTo: 'test@email.com',
+        ErrorType: 1,
+        BillNumber: 'test bill number'
+      }
+    ];
   }));
 
   it('should create', () => {
