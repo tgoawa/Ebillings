@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -28,10 +28,15 @@ export class BillingsProcessService {
     );
   }
 
+  restageEbills(accountList: IBillingAccount[]) {
+    return this.http.put(api + 'RestageEbills', accountList)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
   updateBadEmail(account: IBillingAccount) {
-    // const headers = new HttpHeaders();
-    // headers.append('Content-Type', 'application/json');
-    // return this.http.put(api + 'UpdateBadEmail', JSON.stringify(account), {headers: headers})
     return this.http.put(api + 'UpdateBadEmail', account)
     .pipe(
       retry(3),
