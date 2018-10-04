@@ -31,13 +31,7 @@ export class MainBillingProcessorComponent implements OnInit {
     .subscribe((data: IBillingAccount[]) => {
       if (data) {
         this.isProcessing = false;
-        if (data.length > 0) {
-          this.listOfBillings = data;
-          this.billingsProcessStatus = 2;
-        } else {
-          this.listOfBillings = data;
-          this.billingsProcessStatus = 1;
-        }
+        this.processBillingsData(data);
       } else {
         console.error('No List of accounts returned from service');
         this.listOfBillings = null;
@@ -70,5 +64,15 @@ export class MainBillingProcessorComponent implements OnInit {
       this.countProcessStatus = 3;
       this.displayCount = null;
     });
+  }
+
+  private processBillingsData(data: IBillingAccount[]) {
+    if (data.length > 0) {
+      this.listOfBillings = data;
+      this.billingsProcessStatus = 2;
+    } else {
+      this.listOfBillings = data;
+      this.billingsProcessStatus = 1;
+    }
   }
 }
