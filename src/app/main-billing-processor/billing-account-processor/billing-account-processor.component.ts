@@ -11,6 +11,7 @@ import { BillingsProcessService } from '../../service/billings-process.service';
 export class BillingAccountProcessorComponent implements OnChanges {
   @Input() billingList: IBillingAccount[];
   selectedAccount: IBillingAccount;
+  restageProcessStatus: number;
   updateEmailProcessStatus: number;
 
   constructor(private billingsService: BillingsProcessService) {}
@@ -23,20 +24,22 @@ export class BillingAccountProcessorComponent implements OnChanges {
   }
 
   restageAccounts() {
+    this.restageProcessStatus = 0;
     this.billingsService.restageEbills(this.billingList)
     .subscribe((data: IBillingAccount) => {
       if (data) {
         if (data.ClientId === 0) {
           // success!
-        } else {
-          // something wrong!
+          this.restageProcessStatus = 1;
         }
       } else {
         // No object returned error
+        this.restageProcessStatus = 2;
       }
     }, error => {
       console.error(error);
-    })
+      this.restageProcessStatus = 3;
+    });
   }
 
   updateBadEmail(account: IBillingAccount) {

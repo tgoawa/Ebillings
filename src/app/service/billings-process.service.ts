@@ -5,7 +5,6 @@ import { catchError, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ICount } from 'src/app/model/count';
 import { IBillingAccount } from '../model/billingAccount';
-import { BadEbillings } from '../model/badEbillings';
 
 const api = environment.envApi;
 @Injectable()
