@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BillingAccountListComponent } from './billing-account-list.component';
+import { MatCardModule, MatListModule } from '@angular/material';
 
 describe('BillingAccountListComponent', () => {
   let component: BillingAccountListComponent;
@@ -8,6 +9,7 @@ describe('BillingAccountListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ MatCardModule, MatListModule ],
       declarations: [ BillingAccountListComponent ]
     })
     .compileComponents();

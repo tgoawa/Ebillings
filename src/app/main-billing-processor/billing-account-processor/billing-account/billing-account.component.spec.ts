@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BillingAccountComponent } from './billing-account.component';
+import { MatCardModule, MatFormFieldModule } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('BillingAccountComponent', () => {
   let component: BillingAccountComponent;
@@ -8,6 +10,7 @@ describe('BillingAccountComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ MatCardModule, MatFormFieldModule, ReactiveFormsModule ],
       declarations: [ BillingAccountComponent ]
     })
     .compileComponents();
@@ -19,7 +22,4 @@ describe('BillingAccountComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });

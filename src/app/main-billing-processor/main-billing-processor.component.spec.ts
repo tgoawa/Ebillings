@@ -5,10 +5,16 @@ import { ICount } from '../model/count';
 import { BillingsProcessService } from '../service/billings-process.service';
 import { of } from 'rxjs/internal/observable/of';
 import { BillingsCountComponent } from './billings-count/billings-count.component';
-import { MatCardModule } from '@angular/material';
+import { MatProgressSpinnerModule, MatCardModule, MatListModule, MatFormFieldModule } from '@angular/material';
 import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { IBillingAccount } from '../model/billingAccount';
+import { BillingAccountProcessorComponent } from './billing-account-processor/billing-account-processor.component';
+// tslint:disable-next-line:max-line-length
+import { BillingAccountListComponent } from 'src/app/main-billing-processor/billing-account-processor/billing-account-list/billing-account-list.component';
+// tslint:disable-next-line:max-line-length
+import { BillingAccountComponent } from 'src/app/main-billing-processor/billing-account-processor/billing-account/billing-account.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 describe('MainBillingProcessorComponent', () => {
@@ -18,8 +24,12 @@ describe('MainBillingProcessorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ MatCardModule, HttpClientModule ],
-      declarations: [ MainBillingProcessorComponent, BillingsCountComponent ],
+      imports: [ HttpClientModule, MatCardModule, MatListModule, MatFormFieldModule, MatProgressSpinnerModule, ReactiveFormsModule],
+      declarations: [ MainBillingProcessorComponent,
+        BillingsCountComponent,
+        BillingAccountProcessorComponent,
+        BillingAccountListComponent,
+        BillingAccountComponent ],
       providers: [ BillingsProcessService ],
     })
     .compileComponents();
