@@ -14,8 +14,8 @@ export class MainBillingProcessorComponent implements OnInit {
   displayBillingAccountProcessor: boolean;
   isProcessing = false;
   listOfBillings: IBillingAccount[];
-  countProcessStatus: number;
-  billingsProcessStatus: number;
+  countProcessStatus = 0;
+  billingsProcessStatus = 0;
 
   constructor(private billingsService: BillingsProcessService) { }
 

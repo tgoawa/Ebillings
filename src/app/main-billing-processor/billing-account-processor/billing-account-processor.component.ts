@@ -12,8 +12,8 @@ import { RestageEbillings } from 'src/app/model/restageEbillings';
 export class BillingAccountProcessorComponent implements OnChanges {
   @Input() billingList: IBillingAccount[];
   selectedAccount: IBillingAccount;
-  restageProcessStatus: number;
-  updateEmailProcessStatus: number;
+  restageProcessStatus = 0;
+  updateEmailProcessStatus = 0;
 
   constructor(private billingsService: BillingsProcessService) {}
 
@@ -21,7 +21,6 @@ export class BillingAccountProcessorComponent implements OnChanges {
 
   onAccountSelected(account: IBillingAccount) {
     this.selectedAccount = account;
-    this.updateEmailProcessStatus = 0;
   }
 
   restageAccounts() {
