@@ -43,7 +43,7 @@ export class BillingAccountProcessorComponent implements OnChanges {
   private processUpdateEmailResponse(originalAccount: IBillingAccount,  responseAccount: IBillingAccount) {
     const indexOfOriginalAccount = this.billingList.findIndex(account => account.tblDraftBillId === originalAccount.tblDraftBillId);
     if (responseAccount.ClientId === 0) {
-      if (indexOfOriginalAccount > 0) {
+      if (indexOfOriginalAccount > -1) {
         this.billingList.splice(indexOfOriginalAccount, 1);
         this.updateEmailProcessStatus = 1;
       }
