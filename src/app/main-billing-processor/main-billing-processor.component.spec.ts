@@ -81,7 +81,8 @@ describe('MainBillingProcessorComponent', () => {
       ClientId: 1,
       InvoicePDFFile: 'test pdf file name',
       EmailAddressTo: 'test email address',
-      ErrorType: 1
+      ErrorType: 1,
+      BillNumber: '1'
     }];
 
     spyOn(billingService, 'processBillings').and.returnValue(of(response));
