@@ -5,6 +5,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ICount } from 'src/app/model/count';
 import { IBillingAccount } from '../model/billingAccount';
+import { BadEbillings } from '../model/badEbillings';
 
 const api = environment.envApi;
 @Injectable()
@@ -28,8 +29,8 @@ export class BillingsProcessService {
     );
   }
 
-  restageEbills(accountList: IBillingAccount[]) {
-    return this.http.put(api + 'RestageEbills', accountList)
+  restageEbills(badEbillings: IBillingAccount[]) {
+    return this.http.put(api + 'RestageEbills', badEbillings)
     .pipe(
       retry(3),
       catchError(this.handleError)

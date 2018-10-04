@@ -22,6 +22,23 @@ export class BillingAccountProcessorComponent implements OnChanges {
     this.updateEmailProcessStatus = 0;
   }
 
+  restageAccounts() {
+    this.billingsService.restageEbills(this.billingList)
+    .subscribe((data: IBillingAccount) => {
+      if (data) {
+        if (data.ClientId === 0) {
+          // success!
+        } else {
+          // something wrong!
+        }
+      } else {
+        // No object returned error
+      }
+    }, error => {
+      console.error(error);
+    })
+  }
+
   updateBadEmail(account: IBillingAccount) {
     this.billingsService.updateBadEmail(account)
     .subscribe((data: IBillingAccount) => {
