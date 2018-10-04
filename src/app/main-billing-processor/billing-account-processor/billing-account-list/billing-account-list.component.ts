@@ -9,6 +9,7 @@ import { IBillingAccount } from 'src/app/model/billingAccount';
 export class BillingAccountListComponent implements OnInit {
   @Input() listOfBillings: IBillingAccount[];
   @Output() selectedAccount = new EventEmitter<IBillingAccount>();
+  @Output() stageAccounts = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -16,6 +17,10 @@ export class BillingAccountListComponent implements OnInit {
 
   onSelect(account: IBillingAccount) {
     this.selectedAccount.emit(account);
+  }
+
+  onStageAccounts(button) {
+    this.stageAccounts.emit(button);
   }
 
 }
