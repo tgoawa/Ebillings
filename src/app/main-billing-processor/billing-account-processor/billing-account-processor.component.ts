@@ -1,6 +1,7 @@
 import { Component, OnChanges, Input, ChangeDetectionStrategy } from '@angular/core';
 import { IBillingAccount } from '../../model/billingAccount';
 import { BillingsProcessService } from '../../service/billings-process.service';
+import { RestageEbillings } from 'src/app/model/restageEbillings';
 
 @Component({
   selector: 'app-billing-account-processor',
@@ -25,7 +26,9 @@ export class BillingAccountProcessorComponent implements OnChanges {
 
   restageAccounts() {
     this.restageProcessStatus = 0;
-    this.billingsService.restageEbills(this.billingList)
+    const badEbillings = new RestageEbillings();
+    badEbillings.BadEbilings = this.billingList;
+    this.billingsService.restageEbills(badEbillings)
     .subscribe((data: IBillingAccount) => {
       if (data) {
         if (data.ClientId === 0) {
