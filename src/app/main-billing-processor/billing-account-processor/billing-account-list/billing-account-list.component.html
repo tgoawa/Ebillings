@@ -6,7 +6,7 @@
     </mat-card-subtitle>
     <mat-card-content>
       <mat-list>
-        <mat-list-item *ngFor="let account of listOfBillings"><button mat-flat-button (click)="onSelect(account)" [ngStyle]="{'background-color':account.ErrorType == 1 ? 'yellow' : 'red'}">{{account.ClientId}}</button></mat-list-item>
+        <mat-list-item *ngFor="let account of listOfBillings"><button mat-button (click)="onSelect(account)" [ngStyle]="{'background-color':account.ErrorType == 1 ? 'yellow' : 'red'}">{{account.ClientId}}</button></mat-list-item>
       </mat-list>
     </mat-card-content>
     <mat-card-actions>
