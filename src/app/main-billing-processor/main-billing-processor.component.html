@@ -14,7 +14,7 @@
       </div>
     </ng-template>
   </div>
-  <div *ngIf="displayBillingAccountProcessor">
+  <div *ngIf="displayBillingAccountProcessor && listOfBillings">
     <section fxLayout="row" fxLayoutAlign="center center" *ngIf="listOfBillings.length > 0">
       <app-billing-account-processor [billingList]="listOfBillings" *ngIf="billingsProcessStatus == 1 || billingsProcessStatus == 2"
         fxFlex="70"></app-billing-account-processor>
