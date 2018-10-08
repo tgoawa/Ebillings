@@ -46,21 +46,25 @@ export class BillingAccountProcessorComponent implements OnChanges {
   }
 
   updateBadEmail(account: IBillingAccount) {
-    this.billingsService.updateBadEmail(account)
-    .subscribe((data: IBillingAccount) => {
-      if (data) {
-      // if data is empty object processes successfully and remove object from list
-      this.processUpdateEmailResponse(account, data);
-      } else {
-        // no object returned from service. This is an error
-        console.error('There was no data object returned from UpdateBadEmail() service call.');
-        this.updateEmailProcessStatus = 3;
-      }
-    }, error => {
-      console.error(error);
-      // an error occured display message to user
-      this.updateEmailProcessStatus = 4;
-    });
+    if (this.hasEmail(account)) {
+      this.billingsService.updateBadEmail(account)
+      .subscribe((data: IBillingAccount) => {
+        if (data) {
+        // if data is empty object processes successfully and remove object from list
+        this.processUpdateEmailResponse(account, data);
+        } else {
+          // no object returned from service. This is an error
+          console.error('There was no data object returned from UpdateBadEmail() service call.');
+          this.updateEmailProcessStatus = 3;
+        }
+      }, error => {
+        console.error(error);
+        // an error occured display message to user
+        this.updateEmailProcessStatus = 4;
+      });
+    } else {
+      // display message that user cannot update account with blank email
+    }
   }
 
   private processUpdateEmailResponse(originalAccount: IBillingAccount,  responseAccount: IBillingAccount) {
@@ -74,6 +78,14 @@ export class BillingAccountProcessorComponent implements OnChanges {
       // response object was the same as the one sent. Account was not processed. Display message to user
       this.billingList[indexOfOriginalAccount] = responseAccount;
       this.updateEmailProcessStatus = 2;
+    }
+  }
+
+  private hasEmail(account: IBillingAccount) {
+    if (account.EmailAddressTo.length > 0 && account.EmailAddressTo.includes('@')) {
+      return true;
+    } else {
+      return false;
     }
   }
 
