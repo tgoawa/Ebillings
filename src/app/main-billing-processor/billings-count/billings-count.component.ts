@@ -9,6 +9,7 @@ import { ICount } from 'src/app/model/count';
 export class BillingsCountComponent implements OnInit {
   @Input() billingsCount: ICount;
   @Output() processBillings = new EventEmitter();
+  @Output() refreshCount = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -16,5 +17,9 @@ export class BillingsCountComponent implements OnInit {
 
   onProcessBillings(button) {
     this.processBillings.emit(button);
+  }
+
+  onRefresh(button) {
+    this.refreshCount.emit(button);
   }
 }

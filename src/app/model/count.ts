@@ -1,3 +1,3 @@
 export interface ICount {
-  Count: string;
+  Count: number;
 }
