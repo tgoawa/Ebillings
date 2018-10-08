@@ -47,7 +47,7 @@ describe('MainBillingProcessorComponent', () => {
   });
 
   it('should call getNumberOfBillings and process status should equal 1', async(() => {
-    const response: ICount = {Count: '8'};
+    const response: ICount = {Count: 8};
 
     spyOn(billingService, 'getBillingsCount').and.returnValue(of(response));
     component.getBillingCount();
