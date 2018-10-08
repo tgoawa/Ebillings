@@ -33,6 +33,7 @@ export class BillingAccountProcessorComponent implements OnChanges {
         if (data.ClientId === 0) {
           // success!
           this.restageProcessStatus = 1;
+          window.location.reload();
         }
       } else {
         // No object returned error
