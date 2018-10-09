@@ -29,6 +29,9 @@
         <p *ngIf="BillingAccount.ErrorType === 1">
           <button mat-flat-button color="primary" type="submit" [disabled]="!BillingAccountForm.valid">Process update</button>
         </p>
+        <p *ngIf="!isValidEmail" style="color: red">
+          Email address is not valid. Please enter a valid email!
+        </p>
       </form>
     </mat-card-content>
   </mat-card>

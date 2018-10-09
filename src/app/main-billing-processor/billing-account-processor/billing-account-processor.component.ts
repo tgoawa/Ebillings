@@ -46,7 +46,6 @@ export class BillingAccountProcessorComponent implements OnChanges {
   }
 
   updateBadEmail(account: IBillingAccount) {
-    if (this.hasEmail(account)) {
       this.billingsService.updateBadEmail(account)
       .subscribe((data: IBillingAccount) => {
         if (data) {
@@ -62,9 +61,6 @@ export class BillingAccountProcessorComponent implements OnChanges {
         // an error occured display message to user
         this.updateEmailProcessStatus = 4;
       });
-    } else {
-      // display message that user cannot update account with blank email
-    }
   }
 
   private processUpdateEmailResponse(originalAccount: IBillingAccount,  responseAccount: IBillingAccount) {
@@ -78,14 +74,6 @@ export class BillingAccountProcessorComponent implements OnChanges {
       // response object was the same as the one sent. Account was not processed. Display message to user
       this.billingList[indexOfOriginalAccount] = responseAccount;
       this.updateEmailProcessStatus = 2;
-    }
-  }
-
-  private hasEmail(account: IBillingAccount) {
-    if (account.EmailAddressTo.length > 0 && account.EmailAddressTo.includes('@')) {
-      return true;
-    } else {
-      return false;
     }
   }
 

@@ -13,6 +13,7 @@ export class BillingAccountComponent implements OnChanges {
   @Input() BillingAccount: IBillingAccount;
   @Output() accountToUpdate = new EventEmitter<IBillingAccount>();
   BillingAccountForm: FormGroup;
+  isValidEmail: boolean;
 
   constructor(private fb: FormBuilder) { }
 
@@ -20,8 +21,14 @@ export class BillingAccountComponent implements OnChanges {
     this.BillingAccountForm = this.toFormGroup(this.BillingAccount);
   }
 
-  onSubmit(formValue) {
-    this.accountToUpdate.emit(formValue);
+  onSubmit(formValue: IBillingAccount) {
+    if (this.hasEmail(formValue)) {
+      this.isValidEmail = true;
+      this.accountToUpdate.emit(formValue);
+    } else {
+      // display message about email address
+      this.isValidEmail = false;
+    }
   }
 
   private toFormGroup(data: IBillingAccount): FormGroup {
@@ -36,6 +43,14 @@ export class BillingAccountComponent implements OnChanges {
     });
 
     return formGroup;
+  }
+
+  private hasEmail(account: IBillingAccount) {
+    if (account.EmailAddressTo.length > 0 && account.EmailAddressTo.includes('@')) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }
