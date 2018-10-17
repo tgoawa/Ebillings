@@ -1,4 +1,11 @@
-import { Component, OnChanges, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnChanges,
+  Input,
+  ChangeDetectionStrategy,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IBillingAccount } from 'src/app/model/billingAccount';
@@ -7,15 +14,17 @@ import { IBillingAccount } from 'src/app/model/billingAccount';
   selector: 'app-billing-account',
   templateUrl: './billing-account.component.html',
   styleUrls: ['./billing-account.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BillingAccountComponent implements OnChanges {
-  @Input() BillingAccount: IBillingAccount;
-  @Output() accountToUpdate = new EventEmitter<IBillingAccount>();
+  @Input()
+  BillingAccount: IBillingAccount;
+  @Output()
+  accountToUpdate = new EventEmitter<IBillingAccount>();
   BillingAccountForm: FormGroup;
   isValidEmail: boolean;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {}
 
   ngOnChanges() {
     this.BillingAccountForm = this.toFormGroup(this.BillingAccount);
@@ -34,23 +43,43 @@ export class BillingAccountComponent implements OnChanges {
   private toFormGroup(data: IBillingAccount): FormGroup {
     const formGroup = this.fb.group({
       tblDraftBillId: data.tblDraftBillId,
-      ClientId: [{value: data.ClientId, disabled: true}],
-      AccountDirector: [{value: data.AccountDirector, disabled: true}],
-      InvoicePDFFile: [{value: data.InvoicePDFFile, disabled: true}],
+      ClientId: [{ value: data.ClientId, disabled: true }],
+      AccountDirector: [{ value: data.AccountDirector, disabled: true }],
+      InvoicePDFFile: [{ value: data.InvoicePDFFile, disabled: true }],
       EmailAddressTo: data.EmailAddressTo,
-      BillNumber: [{value: data.BillNumber, disabled: true}],
-      ErrorType: data.ErrorType
+      BillNumber: [{ value: data.BillNumber, disabled: true }],
+      ErrorType: data.ErrorType,
     });
 
     return formGroup;
   }
 
   private hasEmail(account: IBillingAccount) {
-    if (account.EmailAddressTo.length > 0 && account.EmailAddressTo.includes('@')) {
-      return true;
+    if (account.EmailAddressTo.length > 0) {
+      let emailArray: String[] = [];
+      if (account.EmailAddressTo.includes(';')) {
+        emailArray = account.EmailAddressTo.split(';');
+        return this.isEmailFormat(emailArray);
+      } else if (account.EmailAddressTo.includes(' ')) {
+        emailArray = account.EmailAddressTo.split(' ');
+        return this.isEmailFormat(emailArray);
+      } else {
+        if (account.EmailAddressTo.includes('@')) {
+          return true;
+        }
+      }
     } else {
       return false;
     }
   }
 
+  private isEmailFormat(array: String[]): boolean {
+    for (let count = 0; count < array.length; count++) {
+      if (!array[count].includes('@')) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  }
 }

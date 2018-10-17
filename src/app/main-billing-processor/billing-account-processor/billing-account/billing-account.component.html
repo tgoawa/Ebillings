@@ -27,7 +27,7 @@
           <span *ngIf="BillingAccountForm.get('EmailAddressTo').errors" style="color: red">Not a valid email address format</span>
         </p>
         <p *ngIf="BillingAccount.ErrorType === 1">
-          <button mat-flat-button color="primary" type="submit" [disabled]="!isValidEmail">Process update</button>
+          <button mat-flat-button color="primary" type="submit">Process update</button>
         </p>
         <p *ngIf="!isValidEmail" style="color: red">
           Email address is not valid. Please enter a valid email!
