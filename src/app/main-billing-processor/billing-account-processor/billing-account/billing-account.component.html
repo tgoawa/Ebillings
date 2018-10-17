@@ -22,7 +22,7 @@
         </p>
         <p>
           <mat-form-field class="full-width">
-            <input matInput placeholder="Email Address" formControlName="EmailAddressTo" name="EmailAddressTo">
+            <input matInput placeholder="Email Address" formControlName="EmailAddressTo" name="EmailAddressTo" (change)="isValidEmail = true">
           </mat-form-field>
           <span *ngIf="BillingAccountForm.get('EmailAddressTo').errors" style="color: red">Not a valid email address format</span>
         </p>
