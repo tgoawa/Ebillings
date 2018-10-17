@@ -37,7 +37,7 @@ export class BillingAccountComponent implements OnChanges {
       ClientId: [{value: data.ClientId, disabled: true}],
       AccountDirector: [{value: data.AccountDirector, disabled: true}],
       InvoicePDFFile: [{value: data.InvoicePDFFile, disabled: true}],
-      EmailAddressTo: [data.EmailAddressTo, Validators.email],
+      EmailAddressTo: data.EmailAddressTo,
       BillNumber: [{value: data.BillNumber, disabled: true}],
       ErrorType: data.ErrorType
     });
