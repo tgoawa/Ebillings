@@ -75,11 +75,10 @@ export class BillingAccountComponent implements OnChanges {
 
   private isEmailFormat(array: String[]): boolean {
     for (let count = 0; count < array.length; count++) {
-      if (!array[count].includes('@')) {
+      if ((!array[count].includes('@')) || (array[count].includes(' '))) {
         return false;
-      } else {
-        return true;
       }
     }
+    return true;
   }
 }
