@@ -73,6 +73,8 @@ export class MainBillingProcessorComponent implements OnInit {
     } else {
       this.listOfBillings = data;
       this.billingsProcessStatus = 1;
+      this.displayBillingAccountProcessor = false;
+      this.displayBillingsCount = true;
     }
   }
 }
