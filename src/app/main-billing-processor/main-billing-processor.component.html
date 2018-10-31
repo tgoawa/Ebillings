@@ -1,7 +1,7 @@
 <div fxLayout="column" fxFlex="100">
   <div *ngIf="displayBillingsCount">
     <section fxLayout="row" fxLayoutAlign="center center" *ngIf="displayCount; else loading;">
-      <app-billings-count [billingsCount]="displayCount" *ngIf="countProcessStatus == 1" fxFlex="30" (processBillings)="processBillings()" (refreshCount)="getBillingCount()"></app-billings-count>
+      <app-billings-count [billingsCount]="displayCount" *ngIf="countProcessStatus == 1" fxFlex="30" (processBillings)="processBillings($event)" (refreshCount)="getBillingCount()"></app-billings-count>
       <p style="color:red" *ngIf="countProcessStatus == 2">There was an issue displaying the amount of billings needed
         to
         process. Please reload the application. If problem persists please contact the help desk.</p>

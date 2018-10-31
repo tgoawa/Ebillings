@@ -21,8 +21,8 @@ export class BillingsProcessService {
     );
   }
 
-  processBillings() {
-    return this.http.get<IBillingAccount[]>(api + 'ProcessBillings')
+  processBillings(invoiceDate: string) {
+    return this.http.get<IBillingAccount[]>(api + 'ProcessBillings/' + invoiceDate )
     .pipe(
       retry(3),
       catchError(this.handleError)

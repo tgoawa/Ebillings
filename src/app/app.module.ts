@@ -12,6 +12,8 @@ import {
   MatListModule,
   MatProgressSpinnerModule,
   MatToolbarModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 } from '@angular/material';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -42,9 +44,11 @@ import { BillingAccountProcessorComponent } from './main-billing-processor/billi
     HttpClientModule,
     MatButtonModule,
     MatCardModule,
+    MatDatepickerModule,
     MatInputModule,
     MatFormFieldModule,
     MatListModule,
+    MatNativeDateModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
     ReactiveFormsModule,

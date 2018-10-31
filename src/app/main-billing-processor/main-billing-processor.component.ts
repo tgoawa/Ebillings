@@ -23,11 +23,11 @@ export class MainBillingProcessorComponent implements OnInit {
     this.getBillingCount();
   }
 
-  processBillings() {
+  processBillings(invoiceDate: Date) {
     this.isProcessing = true;
     this.displayBillingAccountProcessor = true;
     this.displayBillingsCount = false;
-    this.billingsService.processBillings()
+    this.billingsService.processBillings(invoiceDate.toDateString())
     .subscribe((data: IBillingAccount[]) => {
       if (data) {
         this.isProcessing = false;
