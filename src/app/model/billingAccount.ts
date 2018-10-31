@@ -6,4 +6,5 @@ export interface IBillingAccount {
   EmailAddressTo: string;
   ErrorType: number;
   BillNumber: string;
+  InvoiceDate: string;
 }

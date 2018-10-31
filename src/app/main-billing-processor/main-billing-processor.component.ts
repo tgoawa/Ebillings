@@ -77,4 +77,5 @@ export class MainBillingProcessorComponent implements OnInit {
       this.displayBillingsCount = true;
     }
   }
+
 }
