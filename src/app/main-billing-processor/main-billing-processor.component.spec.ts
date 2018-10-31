@@ -92,11 +92,12 @@ describe('MainBillingProcessorComponent', () => {
       InvoicePDFFile: 'test pdf file name',
       EmailAddressTo: 'test email address',
       ErrorType: 1,
-      BillNumber: '1'
+      BillNumber: '1',
+      InvoiceDate: '09/10/2018'
     }];
 
     spyOn(billingService, 'processBillings').and.returnValue(of(response));
-    component.processBillings();
+    component.processBillings(new Date());
     fixture.detectChanges();
 
     expect(component.billingsProcessStatus).toEqual(2);
@@ -106,7 +107,7 @@ describe('MainBillingProcessorComponent', () => {
     const response: IBillingAccount[] = [];
 
     spyOn(billingService, 'processBillings').and.returnValue(of(response));
-    component.processBillings();
+    component.processBillings(new Date());
     fixture.detectChanges();
 
     expect(component.billingsProcessStatus).toEqual(1);
@@ -116,7 +117,7 @@ describe('MainBillingProcessorComponent', () => {
     const response: IBillingAccount[] = null;
 
     spyOn(billingService, 'processBillings').and.returnValue(of(response));
-    component.processBillings();
+    component.processBillings(new Date());
     fixture.detectChanges();
 
     expect(component.billingsProcessStatus).toEqual(3);
@@ -134,7 +135,7 @@ describe('MainBillingProcessorComponent', () => {
         })
       )
     );
-    component.processBillings();
+    component.processBillings(new Date());
     fixture.detectChanges();
 
     expect(component.billingsProcessStatus).toEqual(4);

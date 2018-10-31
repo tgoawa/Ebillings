@@ -17,7 +17,8 @@ const testAccount: IBillingAccount = {
   InvoicePDFFile: 'Bad PDF',
   EmailAddressTo: 'test@email.com',
   ErrorType: 1,
-  BillNumber: 'test bill number'
+  BillNumber: 'test bill number',
+  InvoiceDate: '09/10/2018'
 };
 
 describe('BillingAccountProcessorComponent', () => {
@@ -47,7 +48,8 @@ describe('BillingAccountProcessorComponent', () => {
         InvoicePDFFile: 'Bad PDF',
         EmailAddressTo: 'test@email.com',
         ErrorType: 1,
-        BillNumber: 'test bill number'
+        BillNumber: 'test bill number',
+        InvoiceDate: '09/10/2018'
       },
       {
         tblDraftBillId: 200,
@@ -56,7 +58,8 @@ describe('BillingAccountProcessorComponent', () => {
         InvoicePDFFile: 'Bad PDF',
         EmailAddressTo: 'test@email.com',
         ErrorType: 1,
-        BillNumber: 'test bill number'
+        BillNumber: 'test bill number',
+        InvoiceDate: '09/10/2018'
       },
       {
         tblDraftBillId: 200,
@@ -65,7 +68,8 @@ describe('BillingAccountProcessorComponent', () => {
         InvoicePDFFile: 'Bad PDF',
         EmailAddressTo: 'test@email.com',
         ErrorType: 1,
-        BillNumber: 'test bill number'
+        BillNumber: 'test bill number',
+        InvoiceDate: '09/10/2018'
       }
     ];
   }));
@@ -82,7 +86,8 @@ describe('BillingAccountProcessorComponent', () => {
       InvoicePDFFile: '',
       EmailAddressTo: '',
       ErrorType: 0,
-      BillNumber: ''};
+      BillNumber: '',
+      InvoiceDate: ''};
 
     spyOn(billingService, 'updateBadEmail').and.returnValue(of(response));
     component.updateBadEmail(testAccount);
