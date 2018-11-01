@@ -5,7 +5,8 @@ import { ICount } from '../model/count';
 import { BillingsProcessService } from '../service/billings-process.service';
 import { of } from 'rxjs/internal/observable/of';
 import { BillingsCountComponent } from './billings-count/billings-count.component';
-import { MatProgressSpinnerModule, MatCardModule, MatListModule, MatFormFieldModule } from '@angular/material';
+// tslint:disable-next-line:max-line-length
+import { MatProgressSpinnerModule, MatCardModule, MatListModule, MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatInputModule } from '@angular/material';
 import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { IBillingAccount } from '../model/billingAccount';
@@ -15,6 +16,7 @@ import { BillingAccountListComponent } from 'src/app/main-billing-processor/bill
 // tslint:disable-next-line:max-line-length
 import { BillingAccountComponent } from 'src/app/main-billing-processor/billing-account-processor/billing-account/billing-account.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 describe('MainBillingProcessorComponent', () => {
@@ -24,7 +26,8 @@ describe('MainBillingProcessorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientModule, MatCardModule, MatListModule, MatFormFieldModule, MatProgressSpinnerModule, ReactiveFormsModule],
+      // tslint:disable-next-line:max-line-length
+      imports: [ HttpClientModule, BrowserAnimationsModule, MatDatepickerModule, MatCardModule, MatInputModule, MatListModule, MatNativeDateModule, MatFormFieldModule, MatProgressSpinnerModule, ReactiveFormsModule],
       declarations: [ MainBillingProcessorComponent,
         BillingsCountComponent,
         BillingAccountProcessorComponent,
